@@ -19,26 +19,14 @@ import javax.servlet.http.HttpSession;
 public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        //1.获取用户
-        HttpSession session = request.getSession();
-        Object user = session.getAttribute("user");
-
-        //2.判断用户是否存在
-        if(user == null) {
-            //3.不存在就拦截
+        // 1.判断是否需要拦截（ThreadLocal中是否有用户）
+        if(UserHolder.getUser() == null) {
+            //不存在就拦截
             response.setStatus(401);
             return false;
         }
 
-        //4.存在就保存到ThreadLocal
-        UserHolder.saveUser((UserDTO) user);
-
-        //5.放行
+        //存在就放行
         return true;
-    }
-
-    @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        UserHolder.removeUser();
     }
 }
