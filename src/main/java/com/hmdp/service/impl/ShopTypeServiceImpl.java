@@ -21,8 +21,8 @@ import static com.hmdp.utils.RedisConstants.*;
  *  服务实现类
  * </p>
  *
- * @author 虎哥
- * @since 2021-12-22
+ * @author SleepWalker
+ * @since 2022-11-8
  */
 @Service
 public class ShopTypeServiceImpl extends ServiceImpl<ShopTypeMapper, ShopType> implements IShopTypeService {

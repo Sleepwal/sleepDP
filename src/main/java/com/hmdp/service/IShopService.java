@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
  *  服务类
  * </p>
  *
- * @author 虎哥
- * @since 2021-12-22
+ * @author SleepWalker
+ * @since 2022-11-8
  */
 public interface IShopService extends IService<Shop> {
     public Result queryShopById(Long id);
+    public Result update(Shop shop);
 }
